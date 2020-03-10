@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <div id="form-area">
+                <h2>Sign In</h2>
+                <!--successfully registered-->
+                <% if (sucess_msg){ %>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <%= success_msg %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                <% } %>
+                <% if (error_msg){ %>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <%= error_msg %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                <% } %>
+                <!--error from redirect-->
+                <% if (error){ %>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <%= error %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                <% } %>
+                <form>
+                    <div class="form-group">
+                        <input type="email" name="userName" id="userName" 
+                        class="form-control" placeholder="Enter Email" 
+                        value="<%= typeof name !=='undefined' ? name : '' %> ">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="Password" id="Password" 
+                        class="form-control" placeholder="Enter Password"
+                        value="<%= typeof password !=='undefined' ? password : '' %> ">
+                    </div>
+                    <input type="submit" value="Sign In" class="btn btn-secondary text-warning">
+                </form>
+                <br>
+                <!--password reset and sign-up links-->
+                <div class="pull-left">
+                    <a href="/users/password_recovery" class="text-warning">Forgot Password?</a>
+                </div>
+                <div class="pull-right">
+                    <p>Don't have an Account?><a href="/users/register" class="text-warning">Sign Up</a></p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>        
+    </div>
+</div>
+    
+    

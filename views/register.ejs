@@ -1,0 +1,53 @@
+<% include ./partials/message %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <div id="form-area">
+                <h2>Sign Up</h2>
+                <% if (typeof errors != 'undefined'){ %>
+                    <% errors.forEach((error)=>{ %>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <%= error.msg %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                    <% }); %>
+                <% } %>
+                
+                <form>
+                    <div class="form-group">
+                        <input type="text" name="Name" id="Name" class="form-control"
+                        value="<%= typeof name !=='undefined' ? name : '' %> "
+                        placeholder="Enter Name" >
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="Email" id="Email" class="form-control"
+                        value="<%= typeof name !=='undefined' ? name : '' %> "
+                        placeholder="Enter Email" >
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="Password" id="Password" class="form-control"
+                        value="<%= typeof name !=='undefined' ? name : '' %> "
+                        placeholder="Enter Password" >
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="Password" id="Password" class="form-control"
+                        value="<%= typeof name !=='undefined' ? name : '' %> "
+                        placeholder="Confirm Password" >
+                    </div>
+                    <div class="pull-right">
+                        <input type="submit" value="Sign Up" class="btn btn-secondary text-warning">
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+                <!--password reset and sign-up links-->
+                <div id="signup-Reset">
+                        <p class="text-justified">Already have an Account? <span class="text-warning"><a href="login.html">Sign In</a></span></p>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+
+    
