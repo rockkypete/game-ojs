@@ -32,7 +32,7 @@ require('./config/passport')(passport);
 
 //middleware
 //EJS
-app.use(expressLayout)
+app.use(expressLayout);
 app.set('view engine', ejs);
 
 //express-parser(body parser)
