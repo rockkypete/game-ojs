@@ -1,22 +1,13 @@
-// handles all game routes : board for listings
-// rps for the rps game page
-//blackjack for the black jack game page
-
+// import the gamescontrol module
+const Game = require('../gameControl');
 const express = require('express');
-
 const router = express.Router();
 
-//board (game invites) logic
-router.get('/boards', (req, res)=> {
-    res.send({output: 'Here are the list of hosted games available'});
-})
+//instantiate rps game
+const rps = new rps();
 
-//rps game logic
-router.get('/rps', (req, res)=> {
-    res.render('rps', {title: `<title>Game-OJS | R-P-S</title>`});
-})
-
-//blackjack page logic
-router.get('/blackjack', (req, res)=> {
-    res.render('blackjack', {title: `<title>Game-OJS | BlackJack</title>`});
+// logic handle for individual games
+router.get('/compare', (req, res)=>{
+    rps.compareImg();
+    res.end(`${rps.output.hpImg}`)
 })

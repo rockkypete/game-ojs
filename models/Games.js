@@ -15,13 +15,10 @@ const GameSchema = new mongoose.Schema({
         required: true
     },
     activePlayers:{
-        type: Array,
+        type: integer,
         required: true
     },
-    date: {
-        type: Date,
-        default: Date.now
-    }
+    
 });
 
 

@@ -2,8 +2,22 @@ const mongoose = require('mongoose');
 
 const PlayerSchema = new mongoose.Schema({
     //bio, contact, records
-    player: Array,
-    required: true
+    name:{
+        type: string,
+        required: true
+    },
+    wins:{
+        type: integer,
+        required: true
+    },
+    loss:{
+        type: integer,
+        required: true
+    },
+    draws:{
+        type: integer,
+        required: true
+    }
 });
 
 
