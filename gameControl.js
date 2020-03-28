@@ -7,10 +7,18 @@ class Game extends EventEmitter{
 const rps = new Game();
 //create game properties
 rps.compareImg = ()=>{
-    this.emit('action', { result });
+    this.emit('compareImage', { result });
 }
 
 //create the listners here
-rps.on('action', (data)=> output = data)
+rps.on('compareimage', (data)=> rps.output = data)
 
-module.exports = rps;
+const balckjack = new Game();
+//blackjack game properties and methods
+blackjack.hit = ()=> {
+    this.emit('hit', { result })
+}
+
+//blackjack listners
+blackjack.on('hit', (data)=> blackjack.output = data)
+module.exports = rps, blackjack;
