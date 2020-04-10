@@ -11,21 +11,21 @@ const gameSchema = new mongoose.Schema({
         required: true
     },
     description:{
-        type: string,
+        type: String,
         required: true
     },
     players:{
-        type: array,
+        type: Array,
         required: true
     },
     wins:{
-        type: integer,
+        type: Number,
     },
     loss:{
-        type: integer,
+        type: Number,
     },
     draws:{
-        type: integer,
+        type: Number,
     }
     
 });

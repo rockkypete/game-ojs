@@ -13,17 +13,10 @@ const passport = require('passport');
 //initialize the server
 const app = express();
 
-//env config
-require('dotenv').load();
-
 
 //database connection
-const db = require('./config/database').MONGO_URI;
-mongoose.connect(db, { useNewUrlParser: true})
-.then(()=>{
-    console.log('Mongodb is now connected and database ready...');
-})
-.catch((err)=> console.log(err));
+mongoose.connect('mongodb://localhost/gamestation');
+const db = mongoose.connection;
 
 //passport config
 require('./config/passport')(passport);

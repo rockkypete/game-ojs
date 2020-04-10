@@ -3,20 +3,17 @@ const mongoose = require('mongoose');
 const playerSchema = new mongoose.Schema({
     
     name:{
-        type: string,
+        type: String,
         required: true
     },
     wins:{
-        type: integer,
-        required: true
+        type: Number,
     },
     loss:{
-        type: integer,
-        required: true
+        type: Number,
     },
     draws:{
-        type: integer,
-        required: true
+        type: Number,
     }
 });
 

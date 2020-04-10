@@ -6,15 +6,15 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
     //bio, contact, records
     name:{
-        type: string,
+        type: String,
         required: true
     },
     email:{
-        type: string,
+        type: String,
         required: true
     },
     password:{
-        type: string,
+        type: String,
         required: true
     },
     date: {
