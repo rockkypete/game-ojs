@@ -26,7 +26,7 @@ require('./config/passport')(passport);
 //middleware
 //EJS
 app.use(expressLayout);
-app.set('view engine', ejs);
+app.set('view engine', 'ejs');
 
 //express-parser(body parser)
 app.use(express.urlencoded({extended:false}));
@@ -60,14 +60,10 @@ app.use('/', require('./routes/index'));
 //user-based page request
 app.use('/users', require('./routes/users'));
 
-//game play page request
-app.use('/games', require('./routes/games'));
 
 //API endpoint request
 app.use('/records', require('./routes/records'));
 
-//admin page request
-app.use('/admin', require('./routes/admin'));
 
 
 const port = process.env.PORT || 7000;
