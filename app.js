@@ -9,14 +9,18 @@ const expressLayout = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-
 //initialize the server
 const app = express();
 
 
 //database connection
-mongoose.connect('mongodb://localhost/gamestation');
+/*mongoose.connect('mongodb://localhost/gamestation');
 const db = mongoose.connection;
+*/
+db = require('./config/keys').MONGO_URI;
+mongoose.connect(db, { useNewUrlParser: true })
+    .then(()=> console.log('Mongodb connected...'))
+    .catch(err=> console.log(err));
 
 //passport config
 require('./config/passport')(passport);
@@ -61,8 +65,6 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 
 
-//API endpoint request
-app.use('/records', require('./routes/records'));
 
 
 

@@ -1,25 +1,24 @@
-<!--bootstrap album for gaame dsplay-->
 
-<div class="row m-auto" style="height:100vh">
-    <div class="col-md-4 bg-warning">
+
+<div class="row m-auto" style="height:88vh">
+    <div class="col-md-4>
         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-            <a class="navbar-brand text-warning" id="brand" href="#">Dashboard</a>  
+            <a class="navbar-brand text-warning" id="brand" href="/dashboard">Dashboard</a>  
         </nav>
-        
-        <ul class="list-group">
-            <li class="list-item text-secondary"><a href="/users/profile">Profile</a></li>
-            <li class="list-item text-secondary"><a href="/games/stats">Game Stats</a></li>
-            <li class="list-item text-secondary"><a href="/users/wallet">Wallet</a></li>
-            <li class="list-item text-secondary"><a href="/users/messages">Message</a></li>
-            <li class="list-item text-secondary"><a href="/store">Store</a></li>
-
-        </ul>
+        <div>
+            <a href="/users/profile" class="mb-2">Profile</a><br>
+            <a href="/games/stats" class="mb-2">Game Stats</a><br>
+            <a href="/users/wallet" class="mb-2">Wallet</a><br>
+            <a href="/users/messages" class="mb-2">Message</a><br>
+            <a href="/store" >Store</a>
+        </div>    
     </div>
     <div class="col-md-6">
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark">            
-            <!--menu-links-->     
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">            
+            
+            <a href="/" class="nav-item nav-link mr-2 text-warning"role="button">Home</a>
             <a href="/games/board" class="nav-item nav-link mr-2 text-warning"role="button">Board</a>
-            <a href="/games/rps" class="nav-item nav-link mr-2 text-warning"role="button">R-P-S</a>
+            <a href="/games/rps" class="nav-item nav-link mr-2 text-warning"role="button">RPS</a>
             <a href="/games/blackjack" class="nav-item nav-link mr-2 text-warning"role="button">Black Jack</a>            
             <a href="/users/logout" class="nav-item nav-link ml-2 text-warning" role="button">Log Out</a>       
         </nav>
@@ -27,10 +26,7 @@
             <p class="lead mb-4">Welcome back <%= name %> </p>
           
             <div>
-                <!--
-                    <%= feeds %>
-
-                -->
+                
             </div>
         </div>      
     </div>

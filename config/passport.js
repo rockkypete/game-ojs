@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 //load the login claim
-User = require('../models/Users');
+User = require('../models/User');
 
 module.exports = function(passport){
     passport.use(
@@ -31,7 +31,7 @@ module.exports = function(passport){
             .catch(err => console.log(err));
         })
     )
-    passport.serializeUser((User, done)=> {
+    passport.serializeUser((user, done)=> {
         done(null, user.id);
     });
     passport.deserializeUser((id, done)=> {

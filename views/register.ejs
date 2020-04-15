@@ -1,5 +1,3 @@
-<% include ./partials/message %>
-
 <div class="container">
     <div class="row">
         <div class="col-md-6 m-auto">
@@ -14,26 +12,46 @@
                     <% }); %>
                 <% } %>
                 
-                <form>
+                <form action="/users/register" method="POST">
                     <div class="form-group">
-                        <input type="text" name="Name" id="Name" class="form-control"
-                        value="<%= typeof name !=='undefined' ? name : '' %> "
-                        placeholder="Enter Name" >
+                        <input 
+                            type="text" 
+                            name="name" 
+                            id="name" 
+                            class="form-control"
+                            placeholder="Enter Name" 
+                            value="<%= typeof name !=='undefined' ? name : '' %>"
+                        />
                     </div>
                     <div class="form-group">
-                        <input type="email" name="Email" id="Email" class="form-control"
-                        value="<%= typeof name !=='undefined' ? name : '' %> "
-                        placeholder="Enter Email" >
+                        <input 
+                            type="email" 
+                            name="email" 
+                            id="email" 
+                            class="form-control"
+                            placeholder="Enter Email" 
+                            value="<%= typeof name !=='undefined' ? email : '' %>" 
+                        />
                     </div>
                     <div class="form-group">
-                        <input type="password" name="Password" id="Password" class="form-control"
-                        value="<%= typeof name !=='undefined' ? name : '' %> "
-                        placeholder="Enter Password" >
+                        <input 
+                            type="password" 
+                            name="password" 
+                            id="password" 
+                            class="form-control"
+                            placeholder="Enter Password" 
+                            value="<%= typeof name !=='undefined' ? password : '' %>"
+                        />
                     </div>
                     <div class="form-group">
-                        <input type="password" name="Password" id="Password" class="form-control"
-                        value="<%= typeof name !=='undefined' ? name : '' %> "
-                        placeholder="Confirm Password" >
+                        <input 
+                            type="password" 
+                            name="password2" 
+                            id="password2" 
+                            class="form-control"
+                            placeholder="Confirm Password" 
+                            value="<%= typeof name !=='undefined' ? password2 : '' %>"
+                        />
                     </div>
                     <div class="pull-right">
                         <input type="submit" value="Sign Up" class="btn btn-secondary text-warning">
@@ -42,7 +60,7 @@
                 </form>
                 <!--password reset and sign-up links-->
                 <div id="signup-Reset">
-                        <p class="text-justified">Already have an Account? <span class="text-warning"><a href="login.html">Sign In</a></span></p>
+                        <p class="text-justified">Already have an Account? <a href="/users/login" class="text-warning">Sign In</a></p>
                 </div>
             </div>
         </div>        

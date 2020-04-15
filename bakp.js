@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
-const User = require('../models/User');
+User = require('../models/Users');
 
 
 
@@ -14,9 +14,9 @@ router.get('/register', (req, res)=> {
 })
 
 router.post('/register', (req, res)=> {
-    
     //destructure the form data
     const { name, email, password, password2 } = req.body;
+    
     //use if..else conditional to validate form data
     let errors = [];
     //check if all fields a re field
@@ -34,7 +34,6 @@ router.post('/register', (req, res)=> {
     //check for errors before rendering
     if(errors.length > 0){
         res.render('register', {
-            title: 'Game-OJS | Register',
             errors,
             name,
             email,
@@ -43,65 +42,61 @@ router.post('/register', (req, res)=> {
         })
     }else{
         //validation passed. Update the db and render dashboard
-        User.findOne({ email: email })
+        User.findOne({ email: email }, (err, user))
         .then((user)=>{
             //matching record exist. update errors and re-render registration
             if (user){
                 errors.push({msg:'Email has been registered'});
-                res.render('register', {
-                    title: 'Game-OJS | Register',
-                    errors, 
-                    name, 
-                    email, 
-                    password, 
-                    password2
-                });
+                res.render('register', {errors, name, email, password, password2});
             }else{
                 //no existing record. encrypt password with bcrypt 
                 //create instance of User model(new record)
-                const newUser = new User({name, email, password})
-                
-                //hash password
-                bcrypt.genSalt(10, (err, salt)=>
+                newUser = new User({name, email, password})
+                console.log(newUser);
+                //generate salt for hashing
+                bcrypt.gensalt(10, (err, salt))
+                .then((salt)=>{
                     bcrypt.hash(newUser.password, salt, (err, hash)=>{
-                        if(err) throw err;
-                        //set the password to hash
+                        if(err) {
+                            throw err;
+                        }
+                        //set password to hashed
                         newUser.password = hash;
-                        //save the user
-                        newUser.save()
-                            .then(user=>{
-                                req.flash('success_msg', 'You are now Registered and can now login');
-                                res.redirect('login');
-                            })
-                            .catch(err=> console.log(err));
-                }))
+                        //save new user
+                        newUser.save().then((user)=> {
+                            req.flash('sucess_msg', 'Registration was successfully. log in here')
+                            res.re-direct('/users/login');
+                        })
+                    })
+                })
+                .catch(err=> console.log(err));          
             }
-        });        
-    }
-});
+        })
+        .catch(err => console.log(err));
+    }  
+})
+
 
 //login handle
 router.get('/login', (req, res)=> {
     //render login ejs
     res.render('login', {title: 'Game-OJS | Login'});
-});
+})
 
 router.post('/login', (req, res, next)=> {
     passport.authenticate('local', {
         successRedirect: '/dashboard',
         failureRedirect: '/users/login',
-        failureflash: true
+        failureFlash: true
     }) (req, res, next);
 })
 
-router.get('/logout', (req, res)=>{
+//logout handle
+router.get('/logout', (req, res)=> {
     req.logout();
-    req.flash('success_msg', 'You are logged out');
-    res.redirect('login');
-});
-
-
-
+    req.flash('success_msg', 'You are now logged out')
+    res.redirect('/users/login');
+})
 
 
 
